@@ -33,9 +33,13 @@ def main():
         cursor.execute(sql)
         result = cursor.fetchmany(25)
 
-        category_installments = list(map(extract_category_installments, result))
-        categories = [a[0] for a in category_installments]
-        installments = [a[1] for a in category_installments if a != 1]
+        category_installments = tuple(map(extract_category_installments, result))
+
+        # categories = [a[0] for a in category_installments]
+        categories = tuple(map(lambda a: a[0], category_installments))
+        # installments = [a[1] for a in category_installments if a != 1]
+        installments = tuple(filter(lambda a: a[1] != 1, category_installments))
+        installments = tuple(map(lambda a: a[1], installments))
 
         plt.rcdefaults()
         fig, ax = plt.subplots()
