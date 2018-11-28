@@ -2,6 +2,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 from utils import DatabaseHelper
 
+plt.style.use('ggplot')
+
 
 listaEstados=[]
 cancelamentos=[]
@@ -36,8 +38,7 @@ def main():
         performance = cancelamentos
         error = np.random.rand(len(listaEstados))
 
-        ax.barh(y_pos, performance, xerr=error, align='center',
-                color='green', ecolor='black')
+        ax.barh(y_pos, performance, xerr=error, align='center')
         ax.set_yticks(y_pos)
         ax.set_yticklabels(listaEstados)
         ax.invert_yaxis()

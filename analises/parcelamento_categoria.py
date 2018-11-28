@@ -2,6 +2,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 from utils import DatabaseHelper
 
+plt.style.use('ggplot')
+
 
 def extract_category_installments(row):
     if row['Categoria'] == '':
@@ -47,7 +49,7 @@ def main():
         y_pos = np.arange(len(categories))
         error = np.random.rand(len(categories))
 
-        ax.barh(y_pos, installments, xerr=error, align='center', color='red', ecolor='black')
+        ax.barh(y_pos, installments, xerr=error, align='center')
         ax.set_yticks(y_pos)
         ax.set_yticklabels(categories)
         ax.invert_yaxis()
