@@ -9,7 +9,15 @@ select cus.customer_id, ord.order_status, count(ord.order_status), cus.customer_
     order by cus.customer_state
 
 
--- Retorna dados das compras canceladas
+--  Retorna dados das compras canceladas
+
+select cus.customer_id, ord.order_status, count(ord.order_status) as Qtd_compras, cus.customer_state, pay.payment_type, pay.payment_installments, pay.payment_value from orders ord, customers cus, order_payments pay
+	where ord.customer_id = cus.customer_id and
+    ord.order_id = pay.order_id and
+    ord.order_status ='canceled'
+    group by cus.customer_state
+
+
 
 select cus.customer_id, ord.order_status, count(ord.order_status) as Qtd_compras, cus.customer_state, pay.payment_type, pay.payment_installments, pay.payment_value from orders ord, customers cus, order_payments pay
 	where ord.customer_id = cus.customer_id and

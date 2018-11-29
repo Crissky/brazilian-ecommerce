@@ -45,6 +45,7 @@ def main():
         ax.set_xlabel('Valores')
         ax.set_title('Estados que mais cancelaram compras')
 
+        print('')
         plt.show()
 
 if __name__ == '__main__':
